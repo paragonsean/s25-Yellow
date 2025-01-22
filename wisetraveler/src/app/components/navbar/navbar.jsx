@@ -10,7 +10,7 @@ const Navbar = () => {
           Home
         </Link>
         <Link href="/sign-in" className={styles.navbarLinks}>
-          Sign In / Sign Up
+          Sign In / Create Account
         </Link>
       </div>
     </div>
