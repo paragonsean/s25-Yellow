@@ -17,9 +17,9 @@ Next.js has the same syntax as React.
 Follow these steps to run or modify the code:
  - Download & install Node.js (v22.13.1 or v20.18.2 highly recommended)
  - Clone the repository
- - Open the 'wisetraveler' folder in Visual Studio Code
- - Install Dependencies using the command: `npm install`
- - Start the development server using: `npm run dev`
+ - Open the 'wisetraveler' folder in Visual Studio Code.  Do not open the 's25-Yellow' folder.  You must open the 'wisetraveler' folder. 
+ - Using a terminal, install Dependencies using the command: `npm install`
+ - Using a terminal, start the development server using the command: `npm run dev`
  - Click the link 'http://localhost:3000' to see live edits
  - After you are done editing the code, ensure that you push the edits to the repo
 
