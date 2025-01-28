@@ -1,12 +1,13 @@
 Team Yellow - Spring 2025
 
 # Members
-  - killallinstinct - Amonte Edwards - aedwa054@odu.edu
-  - Robert1430 - Robert Martinez - rmart067@odu.edu 
-  - dwmontgomery - Dylan Montgomery - dmont025@odu.edu
-  - Dh025 - Devan Hill - dhill011@odu.edu 
-  - enova003 - Ethan Novak - enova003@odu.edu 
-  - jkc19delta - Justin Corley - jcorl006@odu.edu 
+  - Amonte Edwards - aedwa054@odu.edu - killallinstinct
+  - Robert Martinez - rmart067@odu.edu - Robert1430
+  - Dylan Montgomery - dmont025@odu.edu - dwmontgomery
+  - Devan Hill - dhill011@odu.edu - Dh025
+  - Ethan Novak - enova003@odu.edu - enova003
+  - Justin Corley - jcorl006@odu.edu - jkc19delta
+  - Sean Baker - sbake021@odu.edu - paragonsean
 
 # Info on Next.js
 This project is built using Next.js. React by itself is nothing but a JavaScript library. We need a framework to build our web application.  We can either use create-react-app (CRA) or Next.js as our framework. CRA is no longer maintained, however, Next.js has regular patches and updates. Next.js is a React framework that enables server-side rendering, static site generation, and routing; it is very helpful.
