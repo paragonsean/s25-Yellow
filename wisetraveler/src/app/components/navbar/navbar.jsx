@@ -12,6 +12,9 @@ const Navbar = () => {
         <Link href="/sign-in" className={styles.navbarLinks}>
           Sign In / Create Account
         </Link>
+        <Link href="/chat" className={styles.navbarLinks} >
+          Chat
+        </Link>
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer"
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <Navbar/>
       <h1 className={styles.title}><i>Discover the World with WiseTraveler</i></h1>
       <div className={styles.topDestinations}>
         <h1>Top Destinations</h1>
@@ -87,6 +90,7 @@ export default function Home() {
         <div className={styles.textBubble}>Get personalized travel plans and recommendations with our AI travel planner.</div>
         <button className={styles.button}>Get Started</button>
       </div>
+      <Footer/>
     </div>
   );
 }

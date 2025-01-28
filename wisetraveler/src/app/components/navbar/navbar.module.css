@@ -1,9 +1,10 @@
+
 .navbarBorder {
     width: 100%;
     background: #f6f6f6;
     height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; 
     align-items: center;
     /* padding: 0 30px; */
     padding: 20px 50px 30px 20px;
