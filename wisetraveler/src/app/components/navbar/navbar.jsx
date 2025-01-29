@@ -9,8 +9,8 @@ const Navbar = () => {
         <Link href="/" className={styles.navbarLinks}>
           Home
         </Link>
-        <Link href="/sign-in" className={styles.navbarLinks}>
-          Sign In / Create Account
+        <Link href="/log-in" className={styles.navbarLinks}>
+          Log-In
         </Link>
         <Link href="/chat" className={styles.navbarLinks} >
           Chat
