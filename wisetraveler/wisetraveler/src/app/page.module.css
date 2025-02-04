@@ -1,0 +1,92 @@
+.title {
+  margin: 5%;
+  text-align: center;
+  padding: 30px 0;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  color: #4f5858;
+}
+
+.topDestinations {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  margin: 5%;
+}
+
+.destinations {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  margin: 1%;
+  gap: 1%;
+}
+
+.hiddenGems {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  margin: 5%;
+}
+
+.gems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  margin: 1%;
+  gap: 1%;
+}
+
+.safetyAlerts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+}
+
+.aiPlanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #617576;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #b0b39a;
+  transition: background-color 0.6s ease;
+}
+
+.textBubble {
+  padding: 2%;
+  background-color: #617576;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin: 2%;
+}
+
+.image {
+  border-radius: 20px;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
