@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Team Yellow - Spring 2025
 
-## Getting Started
+# Members
+  - Amonte Edwards - aedwa054@odu.edu - killallinstinct
+  - Robert Martinez - rmart067@odu.edu - Robert1430
+  - Dylan Montgomery - dmont025@odu.edu - dwmontgomery
+  - Devan Hill - dhill011@odu.edu - Dh025
+  - Ethan Novak - enova003@odu.edu - enova003
+  - Justin Corley - jcorl006@odu.edu - jkc19delta
+  - Sean Baker - sbake021@odu.edu - paragonsean
 
-First, run the development server:
+# Info on Next.js
+This project is built using Next.js. React by itself is nothing but a JavaScript library. We need a framework to build our web application.  We can either use create-react-app (CRA) or Next.js as our framework. CRA is no longer maintained, however, Next.js has regular patches and updates. Next.js is a React framework that enables server-side rendering, static site generation, and routing; it is very helpful.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js has the same syntax as React.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# To run / modify this code: 
+Follow these steps to run or modify the code:
+ - Download & install Node.js (v22.13.1 or v20.18.2 highly recommended)
+ - Clone the repository
+ - Open the 'wisetraveler' folder in Visual Studio Code.  Do not just open the 's25-Yellow' folder.  You must open the 'wisetraveler' folder. 
+ - Using a terminal, install Dependencies using the command: `npm install`
+ - Using a terminal, start the development server using the command: `npm run dev`
+ - Click the link 'http://localhost:3000' to see live edits
+ - After you are done editing the code, ensure that you push the edits to the repo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# Workflow Recommendations
+- Always run npm install after pulling updates from the repo
+If someone else has added or updated a dependency, running git pull will not automatically update your local dependencies. To ensure you're using the correct versions, run: `npm install`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ # Helpful info
+- Dependencies like Bootstrap or ESLint are managed via npm (Node Package Manager). 
+- To add new dependencies, use the following command: `npm install <package-name>`
 
-## Learn More
+- Backend developers will have to use RESTful APIs to make HTTP requests to the database, such as GET, POST, or DELETE.
 
-To learn more about Next.js, take a look at the following resources:
+- This resource might be very helpful to everyone, and I recommend taking a look through it: https://www.freecodecamp.org/news/build-a-full-stack-application-with-nextjs/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
