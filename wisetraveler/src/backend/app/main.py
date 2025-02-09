@@ -1,12 +1,13 @@
 import os
 import sys
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Add the current directory to sys.path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Ensure backend directory is in sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from routes import router  # Now it should work
+from app.routes import router  # Ensure routes.py is inside app/
 
 app = FastAPI()
 
@@ -19,8 +20,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include router from routes module
 app.include_router(router)
 
+# Root endpoint
 @app.get("/")
 async def root():
     return {"message": "Welcome to the Travel Planner API!"}
+
+# Run Uvicorn when the script is executed
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
