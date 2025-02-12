@@ -1,8 +1,14 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes.routes import router as api_router
-from config import Config
+from app.routes.routes import router as api_router
+from app.services import (
+    parse_locations,
+    fetch_place_details,
+    call_create_route_function,
+    generate_google_maps_url
+)
+from app.config import Config
 
 # Initialize FastAPI app
 app = FastAPI(
