@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800&display=swap");
+
+.quiz-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-container {
+  margin-top: 2%;
+  width: 95%;
+  max-width: 750px;
+  background: #617576;
+  border-radius: 25px;
+  padding: 30px 60px;
+  color: white;
+}
+
+.quiz-container .active-question-no {
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+}
+
+.quiz-container .total-question {
+  font-size: 20px;
+  font-weight: 500;
+  color: #abaaac;
+}
+
+.quiz-container h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.quiz-container ul li {
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  font-size: 1.6rem;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 11px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.quiz-container ul .selected-answer {
+  background: white;
+  color: black;
+  border: none;
+}
+
+.quiz-container button {
+  background-color: #617576;
+  border: 1px solid white;
+  color: white;
+  border-radius: 20px;
+  font-size: 1.6rem;
+  padding: 10px 42px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.quiz-container button:hover {
+  cursor: pointer;
+  background-color: #d8d3d3;
+  border: 1px solid white;
+  transition: background-color 0.6s ease;
+  padding: 10px 42px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.quiz-container button:disabled {
+  cursor: not-allowed;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.result h3 {
+  font-size: 2rem;
+  letter-spacing: 1.6px;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.result p {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .quiz-container,
+  .total-question,
+  .result p {
+    font-size: calc(5px + 2vmin);
+  }
+
+  .quiz-container ul li {
+    font-size: calc(5px + 2vmin);
+  }
+
+  .quiz-container button {
+    font-size: calc(5px + 2vmin);
+    border: none;
+  }
+
+  .result h3 {
+    font-size: 16px;
+  }
+
+  .quiz-container h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .quiz-container .active-question-no {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .quiz-container .total-question {
+    font-size: 10px;
+    font-weight: 500;
+    color: #abaaac;
+  }
+}

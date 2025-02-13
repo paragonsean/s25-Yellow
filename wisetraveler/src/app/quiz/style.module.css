@@ -1,16 +1,22 @@
 .header {
     text-align: center;
-    margin: 5% 35% 3% 35%;
-    padding: 20px 0;
+    margin: 3% 35%;
+    padding: 2%;
     background-color: #617576;
     border-radius: 20px;
     color: #ffffff;
 }
 
 .description {
-    text-align: center;
-    margin: 0 15%;
-    padding: 20px 0;
+    text-align: left;
+    margin: 1% 15%;
+    padding: 3%;
     border-radius: 20px;
     color: black;
+    background-color: #f8f8f8;
+    font-size: 23px;
+}
+
+.quiz {
+    margin-bottom: 5%;
 }
