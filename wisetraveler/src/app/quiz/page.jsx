@@ -10,7 +10,7 @@ export default function Quiz() {
           At WiseTraveler, we recognize that choosing the perfect travel
           destination can be overwhelming. To simplify your decision-making
           process, we have developed a quick and engaging quiz consisting of
-          just ten questions. 
+          just seven questions. 
           <br/> <br/>
           This fun and insightful tool will guide you in
           discovering the ideal country to explore, tailored to your unique
