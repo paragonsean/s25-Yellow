@@ -10,20 +10,19 @@ const TravelQuiz = () => {
   
   const [destinationRecommendation, setDestinationRecommendation] =
     useState("");
-  const [southAfrica, setSouthAfrica] = useState(0);
-  const [egypt, setEgypt] = useState(0);
-  const [thailand, setThailand] = useState(0);
-  const [india, setIndia] = useState(0);
-  const [china, setChina] = useState(0);
-  const [england, setEngland] = useState(0);
-  const [italy, setItaly] = useState(0);
-  const [germany, setGermany] = useState(0);
   const [mexico, setMexico] = useState(0);
   const [usa, setUsa] = useState(0);
-  const [canada, setCanada] = useState(0);
   const [australia, setAustralia] = useState(0);
+  const [england, setEngland] = useState(0);
+  const [france, setFrance] = useState(0);
+  const [germany, setGermany] = useState(0);
+  const [china, setChina] = useState(0);
+  const [thailand, setThailand] = useState(0);
+  const [japan, setJapan] = useState(0);
+  const [egypt, setEgypt] = useState(0);
+  const [israel, setIsrael] = useState(0);
   const [brazil, setBrazil] = useState(0);
-  const [peru, setPeru] = useState(0); 
+
   const [userChoices, setUserChoices] = useState([
     "",
     "",
@@ -67,94 +66,185 @@ const TravelQuiz = () => {
   };
 
   const determineQuestionOne = () => {
-    if (userChoices[0] === "") {
+    if (userChoices[0] === "North America") {
+      setUsa((prevValue) => prevValue + 3);
+      setMexico((prevValue) => prevValue + 3);
     }
 
-    if (userChoices[0] === "") {
+    if (userChoices[0] === "Europe") {
+      setEngland((prevValue) => prevValue + 3);
+      setGermany((prevValue) => prevValue + 3);
+      setFrance((prevValue) => prevValue + 3);
     }
 
-    if (userChoices[0] === "") {
+    if (userChoices[0] === "Asia") {
+      setChina((prevValue) => prevValue + 3);
+      setThailand((prevValue) => prevValue + 3);
+      setJapan((prevValue) => prevValue + 3);
     }
 
-    if (userChoices[0] === "") {
+    if (userChoices[0] === "Africa and Middle East") {
+      setEgypt((prevValue) => prevValue + 3);
+      setIsrael((prevValue) => prevValue + 3);
+    }
+
+    if (userChoices[0] === "Oceania") {
+      setAustralia((prevValue) => prevValue + 3);
+    }
+
+    if (userChoices[0] === "South America") {
+      setBrazil((prevValue) => prevValue + 3);
     }
   };
 
   const determineQuestionTwo = () => {
-    if (userChoices[1] === "") {
+    if (userChoices[1] === "Family-friendly destinations") {
+      setUsa((prevValue) => prevValue + 1);
+      setJapan((prevValue) => prevValue + 1);
+      setEngland((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setAustralia((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[1] === "") {
-    }
-
-    if (userChoices[1] === "") {
-    }
-
-    if (userChoices[1] === "") {
+    if (userChoices[1] === "Suitable for solo or adult travel") {
+      setEgypt((prevValue) => prevValue + 1);
+      setIsrael((prevValue) => prevValue + 1);
+      setBrazil((prevValue) => prevValue + 1);
+      setMexico((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 1);
     }
   };
 
   const determineQuestionThree = () => {
-    if (userChoices[2] === "") {
+    if (userChoices[2] === "Warm and tropical") {
+      setMexico((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 1);
+      setJapan((prevValue) => prevValue + 1);
+      setUsa((prevValue) => prevValue + 1);
+      setBrazil((prevValue) => prevValue + 1);
+      setAustralia((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[2] === "") {
+    if (userChoices[2] === "Mild and temperate") {
+      setEngland((prevValue) => prevValue + 1);
+      setUsa((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
+    }
+
+    if (userChoices[2] === "Cold or snowy") {
+      setJapan((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
+      setUsa((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
+    }
+
+    if (userChoices[2] === "Hot and arid") {
+      setEgypt((prevValue) => prevValue + 1);
+      setMexico((prevValue) => prevValue + 1);
+      setUsa((prevValue) => prevValue + 1);
+      setAustralia((prevValue) => prevValue + 1);
+      setIsrael((prevValue) => prevValue + 1);
     }
   };
 
   const determineQuestionFour = () => {
-    if (userChoices[3] === "") {
+    if (userChoices[3] === "Seafood and fresh ingredients") {
+      setAustralia((prevValue) => prevValue + 1);
+      setJapan((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[3] === "") {
+    if (userChoices[3] === "Street food and quick bites") {
+      setUsa((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 1);
+      setBrazil((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[3] === "") {
+    if (userChoices[3] === "Fine dining and gourmet experiences") {
+      setFrance((prevValue) => prevValue + 1);
+      setEngland((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[3] === "") {
+    if (userChoices[3] === "Traditional or authentic dishes") {
+      setIsrael((prevValue) => prevValue + 1);
+      setEgypt((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setMexico((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
     }
   };
 
   const determineQuestionFive = () => {
-    if (userChoices[4] === "") {
+    if (userChoices[4] === "I prefer quieter, more peaceful destinations") {
+      setAustralia((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 1);
+      setEgypt((prevValue) => prevValue + 1);
+      setIsrael((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[4] === "") {
-    }
-
-    if (userChoices[4] === "") {
-    }
-
-    if (userChoices[4] === "") {
+    if (userChoices[4] === "I love big cities and crowded places") {
+      setMexico((prevValue) => prevValue + 1);
+      setUsa((prevValue) => prevValue + 1);
+      setJapan((prevValue) => prevValue + 1);
+      setEngland((prevValue) => prevValue + 1);
+      setBrazil((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
     }
   };
 
   const determineQuestionSix = () => {
-    if (userChoices[5] === "") {
+    if (userChoices[5] === "I would prefer to visit a country that has plenty of English speakers") {
+      setUsa((prevValue) => prevValue + 2);
+      setEngland((prevValue) => prevValue + 2);
+      setAustralia((prevValue) => prevValue + 2);
     }
 
-    if (userChoices[5] === "") {
-    }
-
-    if (userChoices[5] === "") {
-    }
-
-    if (userChoices[5] === "") {
+    if (userChoices[5] === "I am comfortable with visiting a country that does not predominantly speak English") {
+      setMexico((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
+      setGermany((prevValue) => prevValue + 1);
+      setEgypt((prevValue) => prevValue + 1);
+      setIsrael((prevValue) => prevValue + 1);
+      setBrazil((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 1);
+      setJapan((prevValue) => prevValue + 1);
+      setChina((prevValue) => prevValue + 1);
     }
   };
 
   const determineQuestionSeven = () => {
-    if (userChoices[6] === "") {
+    if (userChoices[6] === "Modern culture, architecture, and urban life") {
+      setUsa((prevValue) => prevValue + 2);
+      setEngland((prevValue) => prevValue + 2);
+      setFrance((prevValue) => prevValue + 2);
+      setMexico((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[6] === "") {
+    if (userChoices[6] === "Ancient history, ruins, and UNESCO World Heritage sites") {
+      setEgypt((prevValue) => prevValue + 2);
+      setIsrael((prevValue) => prevValue + 2);
+      setMexico((prevValue) => prevValue + 1);
     }
 
-    if (userChoices[6] === "") {
+    if (userChoices[6] === "Unique traditions, festivals, and a mix of old and new") {
+      setChina((prevValue) => prevValue + 2);
+      setJapan((prevValue) => prevValue + 2);
+      setBrazil((prevValue) => prevValue + 1);
+      setThailand((prevValue) => prevValue + 2);
     }
 
-    if (userChoices[6] === "") {
+    if (userChoices[6] === "Relaxed, local culture, and connection with nature") {
+      setAustralia((prevValue) => prevValue + 2);
+      setGermany((prevValue) => prevValue + 1);
+      setFrance((prevValue) => prevValue + 1);
     }
   };
 
@@ -171,20 +261,18 @@ const TravelQuiz = () => {
 
   const determineRecomendation = () => {
     const destinationScores = [
-      { name: "South Africa", score: southAfrica },
       { name: "Egypt", score: egypt },
       { name: "Thailand", score: thailand },
-      { name: "India", score: india },
       { name: "China", score: china },
       { name: "England", score: england },
-      { name: "Italy", score: italy },
       { name: "Germany", score: germany },
       { name: "Mexico", score: mexico },
       { name: "The United States", score: usa },
-      { name: "Canada", score: canada },
       { name: "Australia", score: australia },
       { name: "Brazil", score: brazil },
-      { name: "Peru", score: peru },
+      { name: "Japan", score: japan },
+      { name: "Israel", score: israel },
+      { name: "France", score: france },
     ];
 
     const maxScore = Math.max(
