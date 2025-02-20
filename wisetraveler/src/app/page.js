@@ -42,10 +42,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <h1 className={styles.title}>
+      <div className={styles.highlightsContainer}>
+        <h1 className={styles.highlightsTitle}>
           <i>Highlights of WiseTraveler</i>
         </h1>
-      <div className={styles.highlightsContainer}>
         <h1>Interactive Map</h1>
         <div className={styles.textBubble}>
           Explore your destination with an interactive map.

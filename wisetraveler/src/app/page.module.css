@@ -11,6 +11,12 @@ body {
   color: #4f5858;
 }
 
+.highlightsTitle {
+  color: #4f5858;
+  text-align: center;
+  margin: 2%;
+}
+
 .topDestinations {
   padding: 20px;
   background-color: #f8f8f8;
