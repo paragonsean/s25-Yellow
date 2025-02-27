@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "@clerk/nextjs": "^6.12.1",
+    "@clerk/shared": "latest",
     "@googlemaps/google-maps-services-js": "^3.4.0",
     "axios": "^1.7.9",
     "next": "^15.1.6",
@@ -20,7 +23,15 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/react": "19.0.10",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6"
+    "eslint-config-next": "15.1.6",
+    "typescript": "5.7.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@clerk/shared",
+      "sharp"
+    ]
   }
 }

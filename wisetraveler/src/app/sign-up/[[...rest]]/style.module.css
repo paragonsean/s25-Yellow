@@ -1,3 +1,22 @@
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    width: 100%;
+}
+
+.clerkSignUp {
+    width: 100%;
+    max-width: 400px; /* Restrict form width */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
 .header {
     text-align: center;
     margin: 5% 35% 3% 35%;
