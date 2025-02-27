@@ -56,3 +56,5 @@ yarn-error.log*
 
 # Ignore compiled files (if using TypeScript)
 dist/
+# clerk configuration (can include secrets)
+/.clerk/
