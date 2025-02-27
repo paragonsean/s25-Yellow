@@ -1,0 +1,87 @@
+.header {
+    text-align: center;
+    margin: 5% 35% 3% 35%;
+    padding: 20px 0;
+    background-color: #617576;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 20px;
+    border: none;
+    margin: 1%;
+    gap: 10px;
+}
+
+.forgotPasswordButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.forgotPasswordButton:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.loginButton {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    width: 200px;
+    background-color: #617576;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 1%;
+}
+
+.loginButton:hover {
+    cursor: pointer;
+    background-color: #b0b39a;
+    transition: background-color 0.6s ease;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    border: none;
+    height: 50px;
+    width: 500px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+   .header {
+    margin: 5% 15% 3% 15%;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .input {
+       width: 300px;
+   } 
+}
