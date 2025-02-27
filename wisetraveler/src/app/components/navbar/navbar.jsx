@@ -6,26 +6,31 @@ import styles from "./navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.navbarBorder}>
-      <div className={styles.navbarLinksContainer}>
+      {/* Centered Links */}
+      <div className={styles.navbarCenter}>
         <Link href="/" className={styles.navbarLinks}>Home</Link>
         <Link href="/chat" className={styles.navbarLinks}>Chat</Link>
         <Link href="/quiz" className={styles.navbarLinks}>Destination Quiz</Link>
+      </div>
 
-        {/* Show Sign In and Sign Up when user is signed out */}
-        <SignedOut>
+      {/* Authentication Buttons (Sign In & Sign Up) */}
+      <SignedOut>
+        <div className={styles.authButtons}>
           <SignInButton mode="modal">
             <button className={styles.navbarButton}>Sign In</button>
           </SignInButton>
           <SignUpButton mode="modal">
             <button className={styles.navbarButton}>Sign Up</button>
           </SignUpButton>
-        </SignedOut>
+        </div>
+      </SignedOut>
 
-        {/* Show User Profile when signed in */}
-        <SignedIn>
+      {/* Profile Button - Right Aligned */}
+      <SignedIn>
+        <div className={styles.userProfileContainer}>
           <UserButton afterSignOutUrl="/" />
-        </SignedIn>
-      </div>
+        </div>
+      </SignedIn>
     </div>
   );
 };

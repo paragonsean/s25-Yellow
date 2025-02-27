@@ -1,43 +1,122 @@
+/* Navbar container - centered links, right-aligned profile button */
 .navbarBorder {
     width: 100%;
     background: #f6f6f6;
     height: 80px;
     display: flex;
-    justify-content: center; 
+    justify-content: center; /* Keeps nav links centered */
     align-items: center;
-    /* padding: 0 30px; */
-    padding: 20px 50px 30px 20px;
+    padding: 20px 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Needed for absolute positioning of profile button */
 }
 
+/* Navbar links container - Centering */
+.navbarCenter {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Allows flex to take available space */
+}
+
+/* Navbar links */
 .navbarLinks {
     color: #171717;
-    margin: 0 30px;
-    padding: 10px 0;
     text-decoration: none;
-    font-size: 20px;
-    transition: color 0.7s ease;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
     white-space: nowrap;
 }
 
 .navbarLinks:hover {
     color: #586158;
-    cursor: pointer;
     text-decoration: underline;
-    text-decoration-thickness: 0.1em;
-    text-decoration-color: #586158;
-    text-decoration-style: solid;
-    text-underline-offset: 0.4em;
-    text-decoration-skip-ink: auto;
+    text-underline-offset: 5px;
 }
 
-.navbarLinksContainer {
-    margin-top: 45px;
+/* Sign In and Sign Up buttons */
+.authButtons {
     display: flex;
-    justify-content: flex-end;
+    gap: 15px; /* Adds space between Sign In and Sign Up */
+}
+
+/* Style for Sign In and Sign Up buttons */
+.navbarButton {
+    background: transparent;
+    color: #171717;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #171717;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.navbarButton:hover {
+    background: #171717;
+    color: white;
+}
+
+/* User Profile Button - Positioned at the far right */
+.userProfileContainer {
+    position: absolute;
+    right: 50px; /* Moves profile button to far right */
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive Fixes */
+@media only screen and (max-width: 768px) {
+    .navbarBorder {
+        padding: 10px 20px;
+    }
+
+    .navbarLinks {
+        font-size: 16px;
+    }
+
+    .navbarButton {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .userProfileContainer {
+        right: 20px; /* Adjusted for smaller screens */
+    }
 }
 
 @media only screen and (max-width: 600px) {
+    .navbarBorder {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .navbarCenter {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .authButtons {
+        flex-direction: column; /* Stack buttons on mobile */
+        gap: 10px;
+    }
+
     .navbarLinks {
         font-size: 14px;
     }
-  }
+
+    .navbarButton {
+        width: 100px;
+    }
+
+    .userProfileContainer {
+        position: static; /* Allows stacking on mobile */
+        margin-top: 10px;
+    }
+}
