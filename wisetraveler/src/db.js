@@ -3,8 +3,8 @@ require('dotenv').config();
 
 // local connection placeholders
 // update once .env has been created
-const supabaseUrl = ProcessingInstruction.env.SUPABASE_URL;
-const supabaseKey = ProcessingInstruction.env.SUPABASE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
 
 const supaBase = createClient(supabaseUrl, supabaseKey);
 
