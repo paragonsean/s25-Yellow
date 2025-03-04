@@ -1,23 +1,67 @@
-import dbConnect from "@/db";
-import User from "@/models/User";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+const express = require("express");
+const router = express.Router();
+const supabase = require("@/db");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-export async function POST(req) {
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
   try {
-    await dbConnect();
+    const{ data: user, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", email)
+        .single();
+
+    if (error || !user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+    if (!isMatch) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+
+    return res.status(200).json({ token, user });
+  } catch (err) {
+    console.error("Error during login:", err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+})
+
+module.exports = router;
+/* export async function POST(req) {
+  try {
     const { email, password } = await req.json();
 
-    const user = await User.findOne({ email });
-    if (!user) return Response.json({ error: "Invalid credentials" }, { status: 401 });
+    const { data: user, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", email)
+        .single();
+
+    if (error || !user) {
+    return Response.json({error: "Invalid Credentials" }, {status: 401});
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return Response.json({ error: "Invalid credentials" }, { status: 401 });
+    if (!isMatch) {
+      return Response.json({error: "Invalid Credentials" }, {status: 401});
+    }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: "7d"});
 
     return Response.json({ token, user }, { status: 200 });
   } catch (error) {
-    return Response.json({ error: "Something went wrong" }, { status: 500 });
+    console.error(error)
+    return Response.json({ error: "Something went wrong" }, {status: 500});
   }
 }
+*/
