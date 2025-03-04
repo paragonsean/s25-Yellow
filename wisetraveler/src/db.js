@@ -10,4 +10,4 @@ const supaBase = createClient(supabaseUrl, supabaseKey);
 
 console.log("Connected to Supabase...");
 
-module.exports = supabase;
+module.exports = supaBase;
