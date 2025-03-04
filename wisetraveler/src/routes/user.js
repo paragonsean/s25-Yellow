@@ -92,3 +92,5 @@ export const deleteUser = async (user_id) => {
         throw new Error('Failed to delete account');
     }
 };
+
+
