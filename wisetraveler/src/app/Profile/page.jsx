@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export default function Profile()
 {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [bio, setBio] = useState("");
@@ -24,7 +24,7 @@ export default function Profile()
           "Content -Type": "application/json",
         },
 
-        body: JSON.stringify({username, email, password}),
+        body: JSON.stringify({name, email, location, bio, password}),
       });
 
       if (response.ok)
@@ -53,72 +53,77 @@ export default function Profile()
   
   return (
     <div>
-    <h1 className = {styles.header}>Profile Settings</h1>
+      <h1 className = {styles.header}>Profile Settings</h1>
     
-    <Image
-      src={"/images/avatar-placeholder.jpg"}
-      width={300}
-      height={200}
-      className={styles.Image}
-    />
+      <Image
+        src={"/images/avatar-placeholder.jpg"}
+        alt="Profile"
+        width={300}
+        height={200}
+        className={styles.Image}
+      />
 
-    <button>Change Profile Picture</button>
+     <button type="button" className={styles.PButton}>Change Profile Picture</button>
 
-    <form
-      className = {styles.form}>
-      <label className = {styles.label}>
-        Username
-        <input
-          id="username"
-          type="username"
-          name="username"
-          placeholder="username"
-          className={styles.input}
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        /> 
-        </label>
+      <form
+        className = {styles.form}>
+        <label className = {styles.label}>
+          Name
+          <input
+            id="name"
+            type="name"
+            name="name"
+            placeholder="First and Last"
+            className={styles.input}
+            required
+            onChange={(e) => setName(e.target.value)}
+          /> 
+          </label>
         
-        <label className={styles.label}>
-          Email 
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="email"
-            className={styles.label}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+          <label className={styles.label}>
+            Email 
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Your email address"
+              className={styles.input}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-        <label className={styles.label}>
-          Location
-          <input
-            id="location"
-            type="location"
-            name="location"
-            placeholder="location"
-            className={styles.label}
-            required
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
+          <label className={styles.label}>
+            Location
+            <input
+              id="location"
+              type="location"
+              name="location"
+              placeholder="City, Country"
+              className={styles.input}
+              required
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </label>
 
-        <label className={styles.label}>
-          Bio
-          <input
-            id="bio"
-            type="bio"
-            name="bio"
-            placeholder="bio"
-            className={styles.label}
-            required
-            onChange={(e) => setBio(e.target.value)}
-          />
-        </label>
+          <label className={styles.label}>
+            Bio
+            <input
+              id="bio"
+              type="bio"
+              name="bio"
+              placeholder="Share about your travel experiences. #adventure #explore"
+              className={styles.input}
+              required
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </label>
+      </form>
 
-        <h2 className={styles.header}>Account Security</h2>
+      <h1 className={styles.header}>Account Security</h1>
+      
+      <form
+        className={styles.form}>
 
         <label className={styles.label}>
           Current Password 
@@ -126,8 +131,8 @@ export default function Profile()
             id="password"
             type="password"
             name="password"
-            placeholder="password"
-            className={styles.label}
+            placeholder="Enter current password"
+            className={styles.input}
             required
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -139,8 +144,8 @@ export default function Profile()
             id="password"
             type="password"
             name="password"
-            placeholder="password"
-            className={styles.label}
+            placeholder="Enter new password"
+            className={styles.input}
             required
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -152,17 +157,47 @@ export default function Profile()
             id="password"
             type="password"
             name="password"
-            placeholder="password"
-            className={styles.label}
+            placeholder="Re-enter new password"
+            className={styles.input}
             required
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
-      <button type="button" className={styles.updatePasswordButton}>
+        <button type="button" className={styles.PButton}>
         Update Password
-      </button>
+        </button>
       </form>
+
+      <h1 className={styles.header}>Notification Preferences</h1>
+
+      <form
+        className={styles.form}>
+        <label className= {styles.label}>
+          Recieve updates on top destinations
+          
+        </label>
+
+        <label className= {styles.label}>
+          Get notified about hidden gems
+          
+        </label>
+
+        <label className= {styles.label}>
+          Stay informed on safety alerts
+          
+        </label>
+
+        <label className= {styles.label}>
+          Recieve community announcements
+          
+          <button type="checkbox" className={styles.checkbox}></button>
+        </label>
+
+        
+
+      </form>
+
     </div>
   );
 }
