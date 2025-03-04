@@ -4,11 +4,10 @@ import OpenAI from "openai";
 
 dotenv.config();
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+
 
 // Function to parse locations from itinerary
 export function parseLocations(itinerary) {
@@ -54,10 +53,14 @@ export async function fetchPlaceDetails(place) {
      */
     const url = "https://maps.googleapis.com/maps/api/place/textsearch/json";
 
-    if (!GOOGLE_API_KEY) {
-        console.error("GOOGLE_API_KEY is missing. Check the .env file");
+    if (!process.env.OPENAI_API_KEY) {
+        console.error("OPENAI_API_KEY is missing. Check the .env file.");
         return null;
-
+    }
+    
+    if (!GOOGLE_API_KEY) {
+        console.error("GOOGLE_API_KEY is missing. Check the .env file.");
+        return null;
     }
 
     try {
@@ -73,13 +76,24 @@ export async function fetchPlaceDetails(place) {
     }
 
     catch (error) {
-        console.error('Error fetching details for ${place}', error);
+        console.error(`Error fetching details for ${place}`, error);
         return null;
     }
 }
 
 // TODO Create export function to call OpenAI API to optimize travel route
 export async function callCreateRouteFunction(placesDetails) {
+
+    if (!process.env.OPENAI_API_KEY) {
+        console.error("OPENAI_API_KEY is missing. Check the .env file.");
+        return null;
+    }
+    
+    if (!GOOGLE_API_KEY) {
+        console.error("GOOGLE_API_KEY is missing. Check the .env file.");
+        return null;
+    }
+
     const detailsStr = placesDetails.map(d =>
         `Name: ${d.name || "N/A"}\nAddress: ${d.formatted_address || "N/A"}\nRating: ${d.rating || "N/A"}`
     ).join("\n\n");
@@ -91,14 +105,13 @@ export async function callCreateRouteFunction(placesDetails) {
         },
         {
             role: "user",
-            content: (
-                "Based on the following list of places and their details, determine the best order ",
-                "to visit all these locations. Make sure that your optimized route includes every one of the provided places, ",
-                "taking into account geographic proximity and ratings. ",
-                "Return the result by calling the function 'create_route' with two fields: ",
-                "'route' (an ordered list of place names that includes all the given locations) ",
+            content: 
+                "Based on the following list of places and their details, determine the best order " +
+                "to visit all these locations. Make sure that your optimized route includes every one of the provided places, " +
+                "taking into account geographic proximity and ratings. " +
+                "Return the result by calling the function 'create_route' with two fields: " +
+                "'route' (an ordered list of place names that includes all the given locations) " +
                 "and 'explanation' (a short rationale).\n\n" + detailsStr
-            )
         }
     ];
 
@@ -139,6 +152,32 @@ export async function callCreateRouteFunction(placesDetails) {
         console.error("Error determining best route:", error);
         return null;
     }
+}
+
+export const getChatResponse = async (message) => {
+
+    if (!process.env.OPENAI_API_KEY) {
+        console.error("OPENAI_API_KEY is missing. Check the .env file.");
+        return null;
+    }
+    
+    if (!GOOGLE_API_KEY) {
+        console.error("GOOGLE_API_KEY is missing. Check the .env file.");
+    }
+
+    const messages = [
+        { role: "system", content: "You are a helpful travel assistant. "},
+        { role: "user", content: message }
+    ];
+
+    const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: messages,
+        max_tokens: 150,
+        temperature: 0.7,
+    });
+
+    return response.choices[0]?.message?.content?.trim();
 }
 
 // TODO Create export function to generate google maps url
