@@ -3,7 +3,8 @@ import {
     fetchPlaceDetails,
     parseLocations,
     callCreateRouteFunction,
-    generateGoogleMapsUrl
+    generateGoogleMapsUrl,
+    getChatResponse
 } from "../services/services.js";
 
 import OpenAI from "openai";
@@ -108,6 +109,27 @@ router.post("/get-route", async (req, res) => {
 
 });
 
+router.post("/chat", async (req, res) => {
+    try {
+        const { message } = req.body;
+        if (!message) {
+            return res.status(400).json({ error: "Message is required" });
+        }
+
+        const chatResponse = await getChatResponse(message);
+        if (!chatResponse) {
+            return res.status(500).json({ error: "Failed to generate chat response" });
+        }
+
+        res.json({ response: chatResponse });
+    }
+
+    catch (error) {
+        console.error("Error generating chat response:", error);
+        res.status(500).json({ error: "Failed to generate chat response" });
+    }
+});
+
 // Route to fetch place details from Google Places API
 router.get("/places/:place", async (req, res) => {
     const place = req.params.place;
@@ -115,6 +137,6 @@ router.get("/places/:place", async (req, res) => {
     res.json(details);
 });
 
-// TODO post example to parse locations from itinerary
+// TODO: post example to parse locations from itinerary
 
 export default router;
