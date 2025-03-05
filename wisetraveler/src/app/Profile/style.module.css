@@ -1,13 +1,13 @@
 .header {
     text-align: center;
-    margin: 5% 35% 3% 35%;
     padding: 20px 0;
+    margin: 5% 0;
     background-color: #617576;
     border-radius: 20px;
     color: #ffffff;
 }
 
-.form {
+.profilePic {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,33 +15,11 @@
     gap: 10px;
 }
 
-.label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    border-radius: 20px;
-    border: none;
-    margin: 1%;
-    gap: 10px;
+.profileImage {
+    border-radius: 50%;
 }
 
-.forgotPasswordButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-}
-
-.forgotPasswordButton:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.loginButton {  
+.button {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,12 +31,34 @@
     border: none;
     border-radius: 20px;
     margin: 1%;
+    font-size: 20px;
 }
 
-.loginButton:hover {
+.button:hover {
     cursor: pointer;
     background-color: #b0b39a;
-    transition: background-color 0.6s ease;
+    transition: background-color 0.3s ease;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 20px;
+    border: none;
+    margin: 1%;
+    gap: 10px;
+    font-size: 20px;
 }
 
 .input {
@@ -72,6 +72,35 @@
     height: 50px;
     width: 500px;
     padding: 10px;
+    font-size: 20px;
+}
+
+.profileContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.personalInfoContainer,
+.securityInfoContainer,
+.notificationsContainer {
+    flex: 1;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+    .profileContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .personalInfoContainer,
+    .securityInfoContainer,
+    .notificationsContainer {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1200px) {

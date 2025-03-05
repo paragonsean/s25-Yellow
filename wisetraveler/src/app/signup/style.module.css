@@ -7,12 +7,18 @@
     color: #ffffff;
 }
 
+.checkbox {
+    margin: 10px;
+    font-size: 20px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-size: 20px;
 }
 
 .label {
@@ -24,15 +30,20 @@
     border: none;
     margin: 1%;
     gap: 10px;
+    font-size: 20px;
 }
-.terms{
+
+.terms {
     display: flex;
     align-items: center;
+    font-size: 20px;
 }
+
 .login {
     padding: 10px;
     border: none;
     background-color: transparent;
+    font-size: 20px;
 }
 
 .login:hover {
@@ -56,6 +67,7 @@
     border: none;
     border-radius: 20px;
     margin: 1%;
+    font-size: 20px;
 }
 
 .loginButton:hover {
@@ -75,6 +87,7 @@
     height: 50px;
     width: 500px;
     padding: 10px;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 1200px) {

@@ -24,12 +24,12 @@ export default function LogIn() {
         </label>
         <label className="terms">
             <input type="checkbox"  className={styles.checkbox} required/>
-            By Signing up, you agree to our <a href="/TermsAndConditions">Terms and Conditions</a>
+            By signing up, you agree to our <a href="/TermsAndConditions">Terms and Conditions</a>
         </label>
         <button type="submit" className={styles.loginButton}>Join now</button>
         <label className="label-container">
             Already a member?
-            <button type="button" className={styles.login}> Log in</button>
+            <button type="button" className={styles.login}>Login</button>
         </label>
       </form>
     </div>
