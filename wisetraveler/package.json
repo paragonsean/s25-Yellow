@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.4.0",
+    "@supabase/supabase-js": "^2.49.1",
     "axios": "^1.7.9",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2",
     "next": "^15.1.6",
     "openai": "^4.83.0",
     "react": "^19.0.0",

@@ -8,7 +8,7 @@ export default function LogIn() {
 
   const attemptLogin = async () => {
     try {
-      const response = await fetch("/api/login", { // [TODO: Update URI of RESTful API, depending on how backend devs implement the API]
+      const response = await fetch("/api/login", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -16,9 +16,11 @@ export default function LogIn() {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
         alert("Login successful, welcome back, Traveler");
+        window.location.href = "/profile";
       } else {
         alert("Login was unsuccessful, Traveler. Please try again later");
       }
@@ -37,7 +39,9 @@ export default function LogIn() {
     <div>
       <h1 className={styles.header}>Welcome Back Traveler</h1>
       <form
-        className={styles.form} /* method="post" action="[TODO: API URL]" */
+        className={styles.form}
+        method="POST"
+        onSubmit={onSubmit}
       >
         <label className={styles.label}>
           Username
@@ -68,7 +72,7 @@ export default function LogIn() {
         </button>
         <button
           type="submit"
-          className={styles.loginButton} /* onClick={onSubmit} */
+          className={styles.loginButton}
         >
           Log In
         </button>
