@@ -20,7 +20,7 @@ export default function LogIn() {
 
       if (response.ok) {
         alert("Login successful, welcome back, Traveler");
-        window.location.href = `/profile?email=${email}`;
+        window.location.href = `/Profile?email=${email}`;
       } else {
         alert("Login was unsuccessful, Traveler. Please try again later");
       }
