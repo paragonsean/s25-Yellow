@@ -1,11 +1,7 @@
-import { getChatResponse } from "./services.js";
 import dotenv from "dotenv";
+import { getChatResponse } from "./services.js";
 
 dotenv.config();
-
-console.log("API Key:", process.env.OPENAI_API_KEY ? "Exists" : "Missing");
-console.log("Loaded API Key:", process.env.OPENAI_API_KEY);
-console.log("Test Variable:", process.env.TEST_VARIABLE);
 
 const testChatResponse = async () => {
     try {
@@ -15,14 +11,10 @@ const testChatResponse = async () => {
         const response = await getChatResponse(message);
         if (response) {
             console.log("Chatbot response:", response);
-        }
-
-        else {
+        } else {
             console.log("No response received");
         }
-    }
-
-    catch (error) {
+    } catch (error) {
         console.error("Error testing chat response:", error);
     }
 };

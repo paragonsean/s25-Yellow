@@ -4,7 +4,10 @@ import OpenAI from "openai";
 
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ 
+    apiKey: process.env.OPENAI_API_KEY,
+    organization: process.env.OPENAI_ORG_ID
+});
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
@@ -137,7 +140,7 @@ export async function callCreateRouteFunction(placesDetails) {
 
     try {
         const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o-mini",
             messages: messages,
             functions: functions,
             function_call: "auto",
@@ -171,7 +174,7 @@ export const getChatResponse = async (message) => {
     ];
 
     const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: messages,
         max_tokens: 150,
         temperature: 0.7,
