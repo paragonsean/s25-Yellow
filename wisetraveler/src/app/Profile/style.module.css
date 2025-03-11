@@ -1,12 +1,11 @@
 .header {
     text-align: center;
-    padding: 20px 0;
     margin: 5% 0;
+    padding: 20px 0;
     background-color: #617576;
     border-radius: 20px;
     color: #ffffff;
 }
-
 .profilePic {
     display: flex;
     flex-direction: column;
@@ -59,6 +58,61 @@
     margin: 1%;
     gap: 10px;
     font-size: 20px;
+}
+
+.Image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 99px;
+    border: none;
+    margin: 1%;
+    gap: 10px;
+}
+
+.Image:hover{
+    cursor: pointer;
+}
+
+.PicButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    width: 200px;
+    background-color: #617576;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 5%;
+}
+
+.PicButton:hover {
+    cursor: pointer;
+    background-color: #b0b39a;
+    transition: background-color 0.6s ease;
+}
+
+.PButton {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    width: 200px;
+    background-color: #617576;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 1%;
+}
+
+.PButton:hover {
+    cursor: pointer;
+    background-color: #b0b39a;
+    transition: background-color 0.6s ease;
 }
 
 .input {
