@@ -30,21 +30,6 @@ body {
     gap: 10px;
 }
 
-.updatePasswordButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-}
-
-.forgotPasswordButton:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 .TripButton {  
     display: flex;
     flex-direction: column;
@@ -59,7 +44,27 @@ body {
     margin: 1%;
 }
 
-.loginButton:hover {
+.TripButton:hover {
+    cursor: pointer;
+    background-color: #b0b39a;
+    transition: background-color 0.6s ease;
+}
+
+.LangButton {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 70px;
+    width: 200px;
+    background-color: #617576;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 1%;
+}
+
+.LangButton:hover {
     cursor: pointer;
     background-color: #b0b39a;
     transition: background-color 0.6s ease;
@@ -76,6 +81,35 @@ body {
     height: 50px;
     width: 500px;
     padding: 10px;
+}
+
+.input2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    border: none;
+    height: 200px;
+    width: 500px;
+    padding: 10px;
+}
+
+.Image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 99px;
+    border: none;
+    margin: 1%;
+    gap: 10px;
+    padding: 20px;
+}
+
+.Image:hover{
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1200px) {
