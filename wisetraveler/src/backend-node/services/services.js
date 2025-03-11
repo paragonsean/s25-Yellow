@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import axios from "axios";
 import OpenAI from "openai";
+import express from "express";
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const openai = new OpenAI({
 });
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+
+const app = express();
+app.use(express.json());
 
 
 // Function to parse locations from itinerary
@@ -164,23 +168,26 @@ export const getChatResponse = async (message) => {
         return null;
     }
     
-    if (!GOOGLE_API_KEY) {
-        console.error("GOOGLE_API_KEY is missing. Check the .env file.");
-    }
-
     const messages = [
         { role: "system", content: "You are a helpful travel assistant. "},
         { role: "user", content: message }
     ];
 
-    const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: messages,
-        max_tokens: 150,
-        temperature: 0.7,
-    });
+    try {
+        const response = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: messages,
+            max_tokens: 150,
+            temperature: 0.7,
+        });
 
-    return response.choices[0]?.message?.content?.trim();
+        return response.choices[0].message.content.trim();
+    }
+
+    catch (error) {
+        console.error("OpenAI API Error:", error);
+        return "Error communicating with AI";
+    }
 }
 
 // TODO Create export function to generate google maps url
