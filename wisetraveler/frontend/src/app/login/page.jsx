@@ -44,7 +44,7 @@ export default function LogIn() {
         onSubmit={onSubmit}
       >
         <label className={styles.label}>
-          Username
+          Email
           <input
             id="email"
             type="email"

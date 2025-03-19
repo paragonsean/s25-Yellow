@@ -1,0 +1,70 @@
+.termsContainer {
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin: 5% 35% 3% 35%;
+    padding: 20px 0;
+    background-color: #617576;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 20px;
+    border: none;
+    margin: 1%;
+    gap: 10px;
+    font-size: 20px;
+    width: 80%;
+    background-color: #ffffff;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginButton {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    width: 200px;
+    background-color: #617576;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 1%;
+    font-size: 20px;
+}
+
+.loginButton:hover {
+    cursor: pointer;
+    background-color: #b0b39a;
+    transition: background-color 0.6s ease;
+}
+
+@media screen and (max-width: 1200px) {
+   .header {
+    margin: 5% 15% 3% 15%;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .label {
+       width: 90%;
+   }
+}
