@@ -11,6 +11,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [terms, setTerms] = useState(false);
+  const [birthdate, setBirthdate] = useState("");
 
   const attemptSignUp = async () => {
     try {
@@ -19,7 +20,7 @@ export default function SignUp() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, firstName, lastName, username, password }),
+        body: JSON.stringify({ email, firstName, lastName, username, birthdate, password }),
       });
 
       const data = await response.json();
@@ -90,6 +91,17 @@ export default function SignUp() {
             className={styles.input}
             required
             onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <label className={styles.label}>
+          Date of Birth
+          <input
+            type="text"
+            name="birthdate"
+            placeholder="Enter your birthdate (YYYY-MM-DD)"
+            className={styles.input}
+            required
+            onChange={(e) => setBirthdate(e.target.value)}
           />
         </label>
         <label className={styles.label}>

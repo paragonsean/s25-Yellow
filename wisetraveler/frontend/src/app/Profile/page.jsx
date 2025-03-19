@@ -2,65 +2,83 @@
 import styles from "./style.module.css";
 import { useState, useEffect } from "react";
 import React from "react";
-import Image from "next/image"
-import Toggle from "./Toggle";
+import Image from "next/image";
+import axios from "axios";
 
-export default function Profile()
-{
-  const [name, setName] = useState("");
+export default function Profile() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [bio, setBio] = useState("");
-  const [password,setPassword] = useState("");
-  const [toggled, setToggled] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const userEmail = params.get("email");
     if (userEmail) {
       setEmail(userEmail);
-      //fetchData(userEmail); // UNCOMMENT THIS WHEN GET ROUTE IS IMPLEMENTED
+      fetchData(userEmail); 
     }
   }, []);
 
   const fetchData = async (email) => {
     try {
-      const response = await axios.get(`api/user/${email}`);
-      setUserData(response.data[0]);
+      const response = await axios.get(`api/user/?email=${email}`);
+      console.log("API Response: " + JSON.stringify(response.data));
+      setUserData(response.data.user);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
   const UpdateProfile = async () => {
     // DO NOT UPDATE EMAIL (EMAIL SHOULD BE READ-ONLY)
-    try
-    {
-      const response = await fetch("/api/profile", 
-      {
-        method: "POST",
-        headers: 
-        {
-          "Content -Type": "application/json",
+    try {
+      const response = await fetch(`/api/updatePersonalInfo/?email=${email}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
 
-        body: JSON.stringify({name, location, bio, password}),
+        body: JSON.stringify({ firstName, lastName, username, birthdate }),
       });
 
-      if (response.ok)
-      {
+      if (response.ok) {
         const data = await response.json();
         alert("Profile updated successfully.");
+        window.location.href = `/Profile?email=${email}`;
+      } else {
+        alert("Unable to update profile, try again later.");
+        window.location.href = `/Profile?email=${email}`;
       }
-
-      else
-      {
-        alert("Unable to update profile.");
-      }
+    } catch (error) {
+      alert(error.message);
     }
+  };
 
-    catch(error)
-    {
+  const changePassword = async () => {
+    try {
+      const response = await fetch(`/api/password/?email=${email}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({ email, password: newPassword }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Password updated successfully.");
+        window.location.href = `/Profile?email=${email}`;
+      } else {
+        alert("Unable to update password, try again later.");
+        window.location.href = `/Profile?email=${email}`;
+      }
+    } catch (error) {
       alert(error.message);
     }
   };
@@ -72,7 +90,11 @@ export default function Profile()
 
   const updatePassword = (e) => {
     e.preventDefault();
-    // TODO: UPDATE PASSWORD
+    if (newPassword === confirmPassword) {
+      changePassword();
+    } else {
+      alert("Passwords do not match. Please try again.");
+    }
   };
 
 
@@ -80,195 +102,147 @@ export default function Profile()
     e.preventDefault();
     // TODO: UPDATE PICTURE
   };
-  
-  return (
-  <div>
-      <h1 className={styles.header} style={{ margin: "5% 20% 3% 20%" }}>Profile Settings for {email}</h1>
 
-      <button type="button" className={styles.PButton}>Save Changes</button>
-      <button type="button" className={styles.PButton}>Edit name</button>
-      <button type="button" className={styles.PButton}>Edit date of birth</button>
-      <button type="button" className={styles.PButton}>Turn on/off notifications</button>
-      <button type="button" className={styles.PButton}>Manage phone number</button>
-      
-      <div className={styles.he} style={{display: "flex", justifyContent: "center"}}>
+  return (
+    <div>
+      <h1 className={styles.header} style={{ margin: "5% 20% 3% 20%" }}>Profile Settings for {userData?.first_name}</h1>
+      <div className={styles.profilePic}>
         <Image
           src={"/images/avatar-placeholder.jpg"}
           alt="Profile"
-          width={200}
+          width={300}
           height={200}
           className={styles.profileImage}
         />
-      
-        <button type="button" className={styles.PicButton} onClick={updatePic}> 
-          Change Profile Picture
+        <button type="button" className={styles.button} onClick={updatePic}>
+          Update Picture
         </button>
       </div>
-     
+      <div>
+        <h1 className={styles.header}>Your Current Information</h1>
+        <div className={styles.infoContainer}>
+          <p>First Name: {userData?.first_name}</p>
+          <br/>
+          <p>Last Name: {userData?.last_name}</p>
+          <br/>
+          <p>Username: {userData?.username}</p>
+          <br/>
+          <p>Email: {userData?.email}</p>
+          <br/>
+          <p>Birthdate: {userData?.birth_date}</p>
+        </div>
+      </div>
       <div className={styles.profileContainer}>
         <div className={styles.personalInfoContainer}>
           <h1 className={styles.header}>Personal Information</h1>
-          <form
-            className = {styles.form}>
-              <label className = {styles.label}>
-                Name
-                <input
-                  id="name"
-                  type="name"
-                  name="name"
-                  placeholder="First and Last"
-                  className={styles.input}
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                /> 
-              </label>
-            
-              <label className={styles.label}>
-                Email 
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  className={styles.input}
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </label>
-
-              <label className={styles.label}>
-                Location
-                <input
-                  id="location"
-                  type="location"
-                  name="location"
-                  placeholder="City, Country"
-                  className={styles.input}
-                  required
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-              </label>
-
-              <label className={styles.label}>
-                Bio
-                <input
-                  id="bio"
-                  type="bio"
-                  name="bio"
-                  placeholder="Share about your travel experiences. #adventure #explore"
-                  className={styles.input}
-                  required
-                  onChange={(e) => setBio(e.target.value)}
-                />
-              </label>
-              <button
-                type="button"
-                className={styles.button}
-                onClick={updateInfo}
-              >
-                Update Info
-              </button>
-              
-             ___________________________________________________________________
-            </form>
-          </div>
-        </div>
-
-        <div className={styles.securityInfoContainer}>
-            <h1 className={styles.header}>Account Security</h1>
-        <div>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={updateInfo}>
             <label className={styles.label}>
-              Current Password 
+              First Name
               <input
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Enter current password"
+                type="text"
+                name="firstName"
+                placeholder="Enter your first name"
                 className={styles.input}
                 required
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
               />
             </label>
-
             <label className={styles.label}>
-              New Password 
+              Last Name
               <input
-                id="password"
+                type="text"
+                name="lastName"
+                placeholder="Enter your last name"
+                className={styles.input}
+                required
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </label>
+            <label className={styles.label}>
+              Username
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter your username"
+                className={styles.input}
+                required
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
+            <label className={styles.label}>
+              Birthdate
+              <input
+                type="text"
+                name="birthdate"
+                placeholder="Enter your birthdate (YYYY-MM-DD)"
+                className={styles.input}
+                required
+                onChange={(e) => setBirthdate(e.target.value)}
+              />
+            </label>
+            <button
+              type="submit"
+              className={styles.button}
+            >
+              Update Info
+            </button>
+          </form>
+        </div>
+        <div className={styles.securityInfoContainer}>
+          <h1 className={styles.header}>Account Security</h1>
+          <form className={styles.form} onSubmit={updatePassword}>
+            <label className={styles.label}>
+              New Password
+              <input
                 type="password"
                 name="password"
                 placeholder="Enter new password"
                 className={styles.input}
                 required
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setNewPassword(e.target.value)}
               />
             </label>
-
             <label className={styles.label}>
-              Confirm New Password 
+              Confirm New Password
               <input
-                id="password"
                 type="password"
-                name="password"
+                name="confirmPassword"
                 placeholder="Re-enter new password"
                 className={styles.input}
                 required
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </label>
-
-            <button type="button" className={styles.PButton}
-              onClick={updatePassword}
+            <button
+              type="submit"
+              className={styles.button}
             >
-            Update Password
+              Update Password
             </button>
-            ___________________________________________________________________
           </form>
         </div>
-
-        <div className={styles.notificationsContainer}>
+        {/* <div className={styles.notificationsContainer}>
           <h1 className={styles.header}>Notification Preferences</h1>
-          <div>
-            <form
-              className={styles.form}>
-              <label className= {styles.label}>
-                <div>
-                  Recieve updates on top destinations {() => setToggled(!toggled)}
-                  <Toggle onChange={(event) => setToggled(event.target.checked)}>
-                  </Toggle>
-                </div>
-              </label>
-              ___________________________________________________________________
+          <form className={styles.form}>
+            <label className={styles.label}>
+              Recieve updates on top destinations
+            </label>
 
-              <label className= {styles.label}>
-                <div>
-                  Get notified about hidden gems {() => setToggled(!toggled)}
-                  <Toggle onChange={(event) => setToggled(event.target.checked)}>
-                  </Toggle>
-                </div>
-              </label>
-            ___________________________________________________________________
+            <label className={styles.label}>
+              Get notified about hidden gems
+            </label>
 
-              <label className= {styles.label}>
-                <div>
-                  Stay informed on safety alerts {() => setToggled(!toggled)}
-                  <Toggle onChange={(event) => setToggled(event.target.checked)}>
-                  </Toggle>
-                </div>
-              </label>
-              ___________________________________________________________________
+            <label className={styles.label}>
+              Stay informed on safety alerts
+            </label>
 
-              <label className= {styles.label}>
-                <div>
-                  Recieve community announcements {() => setToggled(!toggled)}
-                  <Toggle onChange={(event) => setToggled(event.target.checked)}>
-                  </Toggle>
-                </div>
-              </label>
-              ___________________________________________________________________
-            </form>
-          </div>
-        </div>
+            <label className={styles.label}>
+              Recieve community announcements
+              <button type="checkbox" className={styles.checkbox}></button>
+            </label>
+          </form>
+        </div> */}
       </div>
     </div>
   );

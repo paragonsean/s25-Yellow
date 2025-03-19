@@ -1,44 +1,43 @@
 "use client";
 import styles from "./style.module.css";
 import { useState } from "react";
-import Link from "next/link";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const attemptLogin = async () => {
+  const changePassword = async () => {
     try {
-      const response = await fetch("/api/login", { 
-        method: "POST",
+      const response = await fetch(`/api/password/?email=${email}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+
+        body: JSON.stringify({ email, password: password }),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        alert("Login successful, welcome back, Traveler");
+        const data = await response.json();
+        alert("Password updated successfully.");
         window.location.href = `/Profile?email=${email}`;
       } else {
-        alert("Login was unsuccessful, Traveler. Please try again later");
+        alert("Unable to update password, try again later.");
+        window.location.href = `/Profile?email=${email}`;
       }
-
     } catch (error) {
-      console.log(error);
+      alert(error.message);
     }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    attemptLogin();
+    changePassword();
   };
 
   return (
     <div>
-      <h1 className={styles.header}>Welcome Back Traveler</h1>
+      <h1 className={styles.header}>Reset Your Password</h1>
       <form
         className={styles.form}
         method="POST"
@@ -57,7 +56,7 @@ export default function LogIn() {
           />
         </label>
         <label className={styles.label}>
-          Password
+          New Password
           <input
             id="password"
             type="password"
@@ -68,16 +67,11 @@ export default function LogIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <Link href="/forgot-password">
-          <button type="button" className={styles.forgotPasswordButton}>
-            Forgot your password?
-          </button>
-        </Link>
         <button
           type="submit"
           className={styles.loginButton}
         >
-          Log In
+          Reset Password
         </button>
       </form>
     </div>

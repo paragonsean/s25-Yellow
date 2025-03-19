@@ -7,33 +7,25 @@ dotenv.config();
 
 export default async function handler(req, res) {
     if (req.method === "PUT") {
-        const { email, firstName, lastName, username, birthdate, password } = req.body;
+        const { email } = req.query;
+        const { password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({ error: "Email, location, and password are required" });
+            return res.status(400).json({ error: "Email and password are required" });
         }
 
         try {
-            const { data: existingUser, error: emailCheckError } = await supabase
-                .from("users")
-                .select("id")
-                .eq("email", email)
-                .single();
-
-            if (existingUser) {
-                return res.status(400).json({ error: "Email is already taken" });
-            }
-
+            //update password
             const hashedPassword = await bcrypt.hash(password, 10);
 
             const { data: user, error } = await supabase
                 .from("users")
-                .insert({ email: email, username: username, first_name: firstName, last_name: lastName, birth_date: birthdate, password_hash: hashedPassword })
+                .update({ password_hash: hashedPassword })
+                .eq("email", email)
                 .select("*")
                 .single();
-
-            if (error || !user) {
-                console.error("Error inserting user:", error);
+            
+            if(error) {
                 return res.status(500).json({ error: "Something went wrong during signup" });
             }
 
