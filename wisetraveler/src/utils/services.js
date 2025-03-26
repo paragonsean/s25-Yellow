@@ -168,9 +168,25 @@ export const getChatResponse = async (message) => {
         return null;
     }
     
+    const bannedTopics = ["dog", "movie", "cat", "celebrities", "sports", "games", "technology", "ai", "politics"];
+    const containsBannedTopic = bannedTopics.some((topic) =>
+        message.toLowerCase().includes(topic)
+    );
+
+    if (containsBannedTopic) {
+        return "I'm here to help with travel-related inquiries. Feel free to ask me about destinations, local customs, health & safety tips, or planning advice."
+    }
+
     const messages = [
-        { role: "system", content: "You are a helpful travel assistant. "},
-        { role: "user", content: message }
+        { 
+            role: "system", 
+            content: "You are a helpful and focused travel assistant. You ONLY respond to travel-related inquiries. If someone asks about any non-travel topic," +
+                      " kindly remind them that you can only help with travel-related inquiries."
+        },
+        { 
+            role: "user", 
+            content: message 
+        }
     ];
 
     try {
